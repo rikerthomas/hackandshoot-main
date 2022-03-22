@@ -10,7 +10,6 @@ namespace Assets.Scripts
         Vector3 entryBottomPos;
         Vector3 exitTipPos;
         bool hasEntered;
-        private bool hasBeenCut;
 
         private void Update()
         {
@@ -118,7 +117,7 @@ namespace Assets.Scripts
             meshObject.transform.rotation = originalObject.transform.rotation;
             meshObject.transform.position = originalObject.transform.position;
 
-            meshObject.tag = originalObject.tag;
+            meshObject.tag = "untagged";
             
 
             return meshObject;
