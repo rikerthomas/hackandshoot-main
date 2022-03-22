@@ -10,6 +10,12 @@ namespace Assets.Scripts
         Vector3 entryBottomPos;
         Vector3 exitTipPos;
         bool hasEntered;
+        private bool hasBeenCut;
+
+        private void Update()
+        {
+            
+        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -100,6 +106,8 @@ namespace Assets.Scripts
             meshObject.AddComponent<MeshFilter>();
             meshObject.AddComponent<MeshRenderer>();
             Sliceable sliceable = meshObject.AddComponent<Sliceable>();
+            meshObject.AddComponent<DestroyObjects>();
+            
 
             sliceable.IsSolid = oSliceable.IsSolid;
             sliceable.UseGravity = oSliceable.UseGravity;
@@ -111,6 +119,7 @@ namespace Assets.Scripts
             meshObject.transform.position = originalObject.transform.position;
 
             meshObject.tag = originalObject.tag;
+            
 
             return meshObject;
         }
