@@ -86,6 +86,10 @@ public class Chasing : MonoBehaviour
         {
             hits++;
         }
+        if(other.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Audio()

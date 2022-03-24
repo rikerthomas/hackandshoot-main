@@ -8,15 +8,18 @@ public class EnemySpawn : MonoBehaviour
     public Transform enemyPos;
     public bool isDead;
     public GameObject spawner;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
+
         
     }
 
     private void Update()
     {
-        if (enemy == null)
+        
         {
             Destroy(spawner);
             gameObject.GetComponent<BoxCollider>().enabled = false;

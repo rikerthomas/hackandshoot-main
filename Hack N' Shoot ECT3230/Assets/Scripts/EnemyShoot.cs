@@ -24,7 +24,8 @@ public class EnemyShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(hits >= 6)
+
+        if (hits >= 6)
         {
             StopCoroutine(FireGun());
         }
