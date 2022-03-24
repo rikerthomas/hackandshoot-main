@@ -11,7 +11,9 @@ public class NewChasing : MonoBehaviour
     public Collider player;
     private Animator animator;
     private float timeToDisappear = 3f;
-
+    public AudioSource audioSource;
+    public AudioClip clip;
+    private float waitTime;
 
     public GameObject bullet;
 
@@ -20,6 +22,7 @@ public class NewChasing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        InvokeRepeating("Audio", 0f, 3f);
         animator = GetComponent<Animator>();
         bullet = GetComponent<GameObject>();
         rb = GetComponent<Rigidbody>();
@@ -27,18 +30,22 @@ public class NewChasing : MonoBehaviour
 
     private void Update()
     {
+        waitTime = Random.Range(5f, 30f);
+        EnemyDead();
+
+    }
+
+    public void EnemyDead()
+    {
+        if (hits >= 3)
         {
-            if (hits >= 3)
-            {
-                animator.SetBool("isDead", true);
-                StartCoroutine(DisappearCoroutine(gameObject));
+            animator.SetBool("isDead", true);
+            StopCoroutine(MonsterRoar());
+            StartCoroutine(DisappearCoroutine(gameObject));
 
-                return;
-
-            }
+            return;
 
         }
-
 
     }
 
@@ -71,9 +78,21 @@ public class NewChasing : MonoBehaviour
         }
     }
 
+    void Audio()
+    {
+        StartCoroutine(MonsterRoar());
+    }
+
+
     private IEnumerator DisappearCoroutine(GameObject gameObject)
     {
         yield return new WaitForSeconds(timeToDisappear);
         Destroy(gameObject);
+    }
+
+    private IEnumerator MonsterRoar()
+    {
+        yield return new WaitForSeconds(waitTime);
+        audioSource.PlayOneShot(clip);
     }
 }

@@ -16,7 +16,11 @@ public class Chasing : MonoBehaviour
     public GameObject enemY;
     private float timeToDisappear = 3f;
     public Animator animator;
+    public GameObject bulletSpawn;
+    public AudioSource audioSource;
+    public AudioClip clip;
 
+    private float waitTime;
 
     public Transform target;
     public float speed = 4f;
@@ -25,8 +29,11 @@ public class Chasing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
 
+        InvokeRepeating("Audio", 0f, 3f); 
+        audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
+        bulletSpawn = GetComponent<GameObject>();
         bullet = GetComponent<GameObject>();
         enemy = GetComponent<NavMeshAgent>();
         returnToPatrol = GetComponent<Transform>();
@@ -37,8 +44,11 @@ public class Chasing : MonoBehaviour
         // Update is called once per frame
         void Update()
         {
-            if (hits >= 6)
+        waitTime = Random.Range(20f, 200f);
+        if (hits >= 6)
             {
+                StopCoroutine(MonsterRoar());
+                Destroy(bulletSpawn);
                 enemy.SetDestination(transform.position);
                 animator.SetBool("isDead", true);
                 animator.SetBool("isRunning", false);
@@ -78,11 +88,20 @@ public class Chasing : MonoBehaviour
         }
     }
 
+    void Audio()
+    {
+        StartCoroutine(MonsterRoar());
+    }
+
     private IEnumerator DisappearCoroutine(GameObject gameObject)
     {
         yield return new WaitForSeconds(timeToDisappear);
         Destroy(gameObject);
     }
 
-
+    private IEnumerator MonsterRoar()
+    {
+        yield return new WaitForSeconds(waitTime);
+        audioSource.PlayOneShot(clip);
+    }
 }

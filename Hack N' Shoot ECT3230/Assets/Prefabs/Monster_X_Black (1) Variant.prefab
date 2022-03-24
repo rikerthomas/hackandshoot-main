@@ -95,6 +95,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0.103
       objectReference: {fileID: 0}
+    - target: {fileID: 502794754, guid: 3de438e70702ebf428d028c739828f43, type: 3}
+      propertyPath: m_Size.x
+      value: 39.16248
+      objectReference: {fileID: 0}
+    - target: {fileID: 502794754, guid: 3de438e70702ebf428d028c739828f43, type: 3}
+      propertyPath: m_Size.y
+      value: 32.911114
+      objectReference: {fileID: 0}
+    - target: {fileID: 502794754, guid: 3de438e70702ebf428d028c739828f43, type: 3}
+      propertyPath: m_Size.z
+      value: 50.00636
+      objectReference: {fileID: 0}
+    - target: {fileID: 502794754, guid: 3de438e70702ebf428d028c739828f43, type: 3}
+      propertyPath: m_Center.x
+      value: 1.8884964
+      objectReference: {fileID: 0}
+    - target: {fileID: 502794754, guid: 3de438e70702ebf428d028c739828f43, type: 3}
+      propertyPath: m_Center.y
+      value: 2.573054
+      objectReference: {fileID: 0}
+    - target: {fileID: 502794754, guid: 3de438e70702ebf428d028c739828f43, type: 3}
+      propertyPath: m_Center.z
+      value: 1.3104594
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3de438e70702ebf428d028c739828f43, type: 3}
 --- !u!1 &4565778376908870004 stripped
@@ -102,24 +126,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100066, guid: 3de438e70702ebf428d028c739828f43, type: 3}
   m_PrefabInstance: {fileID: 4565778376908969878}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4565778376908869952 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100054, guid: 3de438e70702ebf428d028c739828f43, type: 3}
-  m_PrefabInstance: {fileID: 4565778376908969878}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &811331894
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4565778376908869952}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 66.98276, y: 32.911118, z: 50.006367}
-  m_Center: {x: 0.008432388, y: 2.5730536, z: 1.3104596}
 --- !u!54 &1278935480
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class EnemyShoot : MonoBehaviour
 
     public bool canShootAtPlayer;
 
+    public int hits;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,10 @@ public class EnemyShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(hits >= 6)
+        {
+            StopCoroutine(FireGun());
+        }
     }
 
     void Shoot()
@@ -45,4 +49,14 @@ public class EnemyShoot : MonoBehaviour
         yield return new WaitForSeconds(timeToDisappear);
         Destroy(bulletToDisappear);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("bullet"))
+        {
+            hits++;
+        }
+    }
 }
+
+
